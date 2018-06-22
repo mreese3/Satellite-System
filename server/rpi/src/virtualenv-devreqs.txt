@@ -1,0 +1,13 @@
+decorator==4.0.9
+ipython==4.1.2
+ipython-genutils==0.1.0
+jedi==0.9.0
+pexpect==4.0.1
+pickleshare==0.7.2
+psutil==4.1.0
+ptyprocess==0.5.1
+PyBluez==0.22
+pymodem==0.2
+pyserial==3.0.1
+simplegeneric==0.8.1
+traitlets==4.2.1

@@ -1,0 +1,96 @@
+% This file was converted to LaTeX by Writer2LaTeX ver. 1.4
+% see http://writer2latex.sourceforge.net for more info
+\documentclass[letterpaper]{article}
+
+%Standard Langugage and Character Set
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage[pdftex,
+            pdfauthor={},
+            pdftitle={Telemetry Protocol Specification},
+            pdfcreator={A hammer, Google, and VIM}]{hyperref}
+\usepackage[pdftex]{graphicx}
+\usepackage{float}
+
+%Get multiple writing columns
+\usepackage{multicol}
+\usepackage[margin=.5in]{geometry}
+\pagestyle{empty}
+
+%Multicol attributes
+\setlength{\columnseprule}{1pt}
+
+\begin{document}
+\begin{figure}
+\centering
+\includegraphics[width=7in,height=1.5in]{packettypes.png}
+\end{figure}
+\hrulefill
+
+\begin{quote}
+Packet Types
+
+\begin{quote}
+Bidirectional (Standard) Packet
+\begin{verbatim}
+struct standardpacket {
+        const    char        preamble;    // Byte: Preamble (Magic Number)
+        struct   flagfield   flags;       // Byte: Struct containing 8 flag bits
+        unsigned short       sourceaddr;  // 2Bytes: Source Address 
+        unsigned short       destaddr;    // 2Bytes: Destination Address 
+        unsigned short       sensorid;    // 2Bytes: Sensor Number 
+        unsigned char        length;      // Byte: Length of Payload section
+        char*                payload;     // Payload of length (MTU - 12)
+        unsigned char        checksum;    // Byte: CRC against header and payload
+        const    char        endpacket;   // Byte: End of Data
+        };
+\end{verbatim}
+\end{quote}
+
+
+\begin{quote}
+Unidirectional (One-Way) Packet
+\begin{verbatim}
+struct unidirectionalpacket {
+        const    char        preamble;    // Byte: Preamble (Magic Number)
+        struct   flagfield   flags;       // Byte: Struct containing 8 flag bits
+        unsigned short       sensorid;    // 2Bytes: Sensor Number 
+        unsigned char        length;      // Byte: Length of Payload section
+        char*                payload;     // Payload of length (MTU - 8)
+        unsigned char        checksum;    // Byte: CRC against header and payload
+        const    char        endpacket;   // Byte: End of Data
+        };
+\end{verbatim}
+\end{quote}
+
+%End Packet Type
+\end{quote}
+\hrulefill
+
+\begin{multicols}{2}
+\begin{quote}
+Flags bit-field struct
+\begin{verbatim}
+struct flagfield {
+        unsigned int FLAG1: 1;
+        unsigned int FLAG2: 1;
+        unsigned int FLAG3: 1;
+        unsigned int FLAG4: 1;
+        unsigned int FLAG5: 1;
+        unsigned int FLAG6: 1;
+        unsigned int FLAG7: 1;
+        unsigned int FLAG8: 1;
+        };
+\end{verbatim}
+%End Bitfield
+\end{quote}
+\columnbreak
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=3.5in,height=2in]{bitfield.png}
+\end{figure}
+
+\end{multicols}
+\end{document}

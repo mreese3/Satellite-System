@@ -1,0 +1,23 @@
+Directory Tree.
+├── build		- Build-system files
+├── client		- Client side code
+│   └── all		- Platform independant client-side code. (This may 
+│	│			be merged up, if make a single client.
+│       ├── bin		- Compiled binares
+│       ├── include	- Header files
+│       └── src		- Implimentation (Not header) files
+├── doc
+│   ├── misc ─*		- Old Documentation, code, and modem documentation
+│   │				not directly related to the main project
+│   ├── output		- Compiled LaTeX PDFs. Final form for documentation
+│   └── src		- LaTeX source for documentation
+│       └── diagrams	- Diagrams to be included in the documentation
+└── server		- Server side code
+    ├── all		- Platform Independent server-side code
+    │   ├── bin		- Compiled binares
+    │   ├── include	- Header files
+    │   └── src		- Implimentation (Not header) files
+    └── rpi		- Server code specific to the raspberry-pi
+        ├── bin		- Compiled binares
+        ├── include	- Header files
+        └── src		- Implimentation (Not header) files

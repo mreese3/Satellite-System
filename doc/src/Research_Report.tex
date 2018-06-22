@@ -1,0 +1,100 @@
+\documentclass{article}
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage[en-US]{datetime2}
+\usepackage{multicol}
+\usepackage[blocks]{authblk}
+\usepackage{lipsum}
+
+%Hacky ruler definition for use in checking centering.
+%Will be removed later.
+\def\bars#1{\hbox to #1{\vrule width 0pt height 1mm depth 2mm 
+	\vrule\morebars\morebars}}
+\def\morebars{\hfil\vrule\hfil\vrule\hfil\vrule\hfil\vrule\hfil\vrule}
+\def\ruler#1{\vbox{\bars{#1}\hrule}}
+
+%Special Latex hackery to allow for a thin Abstract, without losing centering
+%or having to force multiple environment. This basically makes abstract
+%a quotation environment, with variable left margin.
+%Pulled from https://tex.stackexchange.com/questions/151583
+%Note that this is hilariously unportable, permanently futzes with the
+%definition of abstract.
+\let\oldabstract\abstract
+\let\oldendabstract\endabstract
+\makeatletter
+\renewenvironment{abstract} {
+	%Changing the leftmargin call 
+	\renewenvironment{quotation} {
+		\list{}{
+			%Set the left margin to adjust the width of the
+			%abstract. It's not ideal, but it's consistent.
+			\addtolength{\leftmargin}{.40in}
+			\listparindent 1.5em%
+			\itemindent
+			\listparindent
+			\rightmargin
+			\leftmargin
+			\parsep \z@\@plus\p@
+			}
+		\item\relax
+		}
+	{\endlist}
+	\oldabstract
+	}
+{\oldendabstract}
+\makeatother
+
+\DTMsavedate{creationdate}{2016-03-11}
+
+\title{
+	Portable Data Server and Client-side Data Parser/Aggregator for
+	Arbitrary Remote Stations
+	}
+\date{\DTMusedate{creationdate}}
+\author[]{Sean Tracy}
+\author[]{James Wagner}
+\author[]{Mike Reese}
+\author[]{\authorcr Faculty Advisor: Dr. Haklim Kimm}
+\affil[]{}
+
+
+\begin{document}
+	\maketitle
+	\vfill
+	\begin{abstract}
+		\large{\noindent
+			A multitude of radio devices exist for the transmission
+			of data from small amateur and educational satellites.
+			The simplest radio modules do not always support
+			data-integrity features like those found in the
+			Transport Layer of the TCP/IP stack, and such systems
+			may be limited in practicality to only broadcasting a
+			FM or CW beacon. If the radio module does support some
+			form of data-integrity protection, its use may be
+			dependent on continued bidirectional communication with
+			the receiving station. Such an arrangement is likely to
+			be subject to loss due to a weak signal on one or both
+			sides of the link, and is far from ideal for
+			organizations lacking in reception capability. This
+			project is an attempt at the design and implementation
+			of a lightweight and portable system for data
+			transmission and logging without the overhead of
+			bidirectional communication or the availability of a
+			high bandwidth link, for use on affordable SoC
+			computers like the Raspberry Pi.
+			}
+		\end{abstract}
+	\vfill
+	\clearpage
+
+	\begin{multicols}{2}
+		\section{Background}
+		\lipsum[1-3]
+		\section{Implementation}
+		\lipsum[4-6]
+		\section{Testing and Refinement}
+		\lipsum[7-9]
+		\section{Results}
+		\lipsum[10-12]
+	\end{multicols}
+
+\end{document}

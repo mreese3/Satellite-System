@@ -1,0 +1,9 @@
+syntax on
+set nowrap
+set nocp
+set nospell
+set spelllang=en_us
+set colorcolumn=80
+set nojoinspaces
+set si
+highlight colorcolumn ctermbg=darkblue guibg=darkgrey
